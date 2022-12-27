@@ -1,7 +1,8 @@
 # Simple urepl like module
 # takes care of connecting to wifi or creating your own
 # written for the Rapsberry Pi Pico W
-# requires the frint dependancy to allow for print over udp
+# requires client to use frint to get output
+#     easiest method to access stdout
 
 import gc
 import socket
@@ -164,6 +165,8 @@ def start():
         if reply == b'stop':
             end_session = True
             
+# Easiest way to redirect stdout, a bit recursive but...
+#     DMA solution too buggy
 def frint(data):
     global ram
     global cur
